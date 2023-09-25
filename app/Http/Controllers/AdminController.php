@@ -9,6 +9,7 @@ use DB;
 use Carbon\Carbon;
 use App\Models\Session;
 use App\Models\ReceivedRequest;
+use App\Models\Feedback;
 
 class AdminController extends Controller
 {
@@ -55,6 +56,9 @@ class AdminController extends Controller
         // Get Database Size
         $dbSize = DB::select('SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) AS size FROM information_schema.tables WHERE table_schema = ?', [env('DB_DATABASE')])[0]->size;
 
-        return view('admin.dashboard', compact('totalSessions', 'newSessionsToday', 'totalCaptures', 'newCapturesToday', 'totalCaptureRows', 'dbSize'));
+        //Get Feedback Items
+        $feedbackItems = Feedback::latest()->paginate(10);
+
+        return view('admin.dashboard', compact('feedbackItems', 'totalSessions', 'newSessionsToday', 'totalCaptures', 'newCapturesToday', 'totalCaptureRows', 'dbSize'));
     }
 }

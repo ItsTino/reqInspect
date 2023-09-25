@@ -31,66 +31,32 @@
 
             </div>
         </div>
-
-        <!-- Three Cards in the Middle Row for Sections 1, 2, 3 -->
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 1</h5>
-                        <p class="card-text">Brief overview for Section 1.</p>
-                        <!-- Include the content for Section 1 here -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 2</h5>
-                        <p class="card-text">Brief overview for Section 2.</p>
-                        <!-- Include the content for Section 2 here -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 3</h5>
-                        <p class="card-text">Brief overview for Section 3.</p>
-                        <!-- Include the content for Section 3 here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Three Cards in the Bottom Row for Sections 4, 5, 6 -->
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 4</h5>
-                        <p class="card-text">Brief overview for Section 4.</p>
-                        <!-- Include the content for Section 4 here -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 5</h5>
-                        <p class="card-text">Brief overview for Section 5.</p>
-                        <!-- Include the content for Section 5 here -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Section 6</h5>
-                        <p class="card-text">Brief overview for Section 6.</p>
-                        <!-- Include the content for Section 6 here -->
-                    </div>
-                </div>
+        <div class="card mt-4">
+            <div class="card-header">Feedback Viewer</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Identifier</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Submitted At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($feedbackItems as $feedback)
+                        <tr>
+                            <th scope="row">{{ $feedback->id }}</th>
+                            <td>{{ $feedback->identifier }}</td>
+                            <td>{{ $feedback->type }}</td>
+                            <td>{{ $feedback->message }}</td>
+                            <td>{{ $feedback->created_at->format('Y-m-d H:i') }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $feedbackItems->links() }} <!-- Pagination Links -->
             </div>
         </div>
     </div>
