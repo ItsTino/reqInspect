@@ -34,7 +34,11 @@ Route::middleware(['admin.auth'])->group(function () {
 
 // Admin login routes without 'admin.auth' middleware
 Route::get('/admin/login', [AdminController::class, 'loginForm'])->name('admin.login');
-Route::post('/admin/login', [AdminController::class, 'login']);
+//Route::post('/admin/login', [AdminController::class, 'login']);
+Route::post('/admin/login', [AdminController::class, 'login'])
+    ->middleware('throttle:3,1') // 3 attempts per 1 minute
+    ->name('admin.login.post');
+
 
 
 
