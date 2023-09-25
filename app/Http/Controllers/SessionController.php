@@ -40,16 +40,24 @@ class SessionController extends Controller
      *
      * @param  string  $uuid
      * @return \Illuminate\View\View
-     */
+     
     public function show($uuid)
     {
         $session = Session::where('uuid', $uuid)->firstOrFail();
         return view('session', compact('session'));
     }
-    
-    
+     */
 
-    
+    public function show($uuid)
+    {
+        $session = Session::where('uuid', $uuid)->firstOrFail();
+        $requests = $session->requests()->latest()->paginate(15);
+        return view('session', compact('session', 'requests'))
+            ->withCookie('last_session_uuid', $session->uuid, 60); // 60 minutes
+    }
+
+
+
 
     // app/Http/Controllers/SessionController.php
 
@@ -81,6 +89,4 @@ class SessionController extends Controller
 
         return view('request', compact('session', 'request'));
     }
-
-    
 }

@@ -44,7 +44,7 @@
                 <div class="text-center mb-4">
                     <h1>Welcome to reqInspect</h1>
                     <p>Inspect web requests and debug online apps, API calls, and webhooks easily.</p>
-                    <p>Free, unlimited usage. No sign-up required.</p>
+                    <p>Free, unlimited (15req/s) usage. No sign-up required.</p>
                 </div>
                 <form action="{{ url('/session') }}" method="POST" class="mb-3">
                     @csrf

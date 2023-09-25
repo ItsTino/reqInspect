@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -24,3 +25,12 @@ Route::any('/capture/{uuid}', [SessionController::class, 'captureData'])->name('
 Route::get('/session/{sessionUuid}/request/{requestId}', [SessionController::class, 'showRequest'])->name('session.showRequest');
 Route::get('/statistics', [StatisticsController::class, 'index']);
 Route::post('/feedback', [FeedbackController::class, 'store']);
+
+// Admin routes with 'admin.auth' middleware
+Route::middleware(['admin.auth'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+
+// Admin login routes without 'admin.auth' middleware
+Route::get('/admin/login', [AdminController::class, 'loginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login']);

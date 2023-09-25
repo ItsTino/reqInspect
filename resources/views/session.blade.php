@@ -76,21 +76,28 @@
                 @endif
 
                 <!-- Captured Requests List Card -->
+                <!-- Captured Requests List Card -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <h3>Captured Requests</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
-                            @foreach($session->requests()->latest()->get() as $request)
+                            @forelse($requests as $request)
                             <li class="list-group-item">
                                 <strong>{{ $request->method }}</strong> at {{ $request->created_at }}
                                 <a href="{{ route('session.showRequest', ['sessionUuid' => $session->uuid, 'requestId' => $request->id]) }}" class="float-right">View Details</a>
                             </li>
-                            @endforeach
+                            @empty
+                            <li class="list-group-item">No requests captured yet.</li>
+                            @endforelse
                         </ul>
                     </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        {{ $requests->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
+
             </div>
         </div>
     </main>
