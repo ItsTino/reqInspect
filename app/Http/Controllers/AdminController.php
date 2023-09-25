@@ -57,8 +57,14 @@ class AdminController extends Controller
         $dbSize = DB::select('SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) AS size FROM information_schema.tables WHERE table_schema = ?', [env('DB_DATABASE')])[0]->size;
 
         //Get Feedback Items
-        $feedbackItems = Feedback::latest()->paginate(10);
+        $feedbackItems = Feedback::latest()->paginate(10, ['*'], 'feedback_page');
 
-        return view('admin.dashboard', compact('feedbackItems', 'totalSessions', 'newSessionsToday', 'totalCaptures', 'newCapturesToday', 'totalCaptureRows', 'dbSize'));
+
+        //Get Sessions
+        $sessions = Session::withCount('requests')
+            ->orderBy('requests_count', 'desc')
+            ->paginate(10, ['*'], 'session_page');
+
+        return view('admin.dashboard', compact('sessions', 'feedbackItems', 'totalSessions', 'newSessionsToday', 'totalCaptures', 'newCapturesToday', 'totalCaptureRows', 'dbSize'));
     }
 }

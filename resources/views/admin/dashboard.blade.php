@@ -56,9 +56,40 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $feedbackItems->links() }} <!-- Pagination Links -->
+                <div class="card-footer d-flex justify-content-center">
+                    {{ $feedbackItems->appends(['session_page' => request('session_page')])->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
+        <div class="card mt-4">
+            <div class="card-header">Session Overview</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Session UUID</th>
+                            <th scope="col">Total Requests</th>
+                            <th scope="col">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($sessions as $session)
+                        <tr>
+                            <th scope="row">{{ $session->id }}</th>
+                            <td>{{ $session->uuid }}</td>
+                            <td>{{ $session->requests_count }}</td>
+                            <td><a href="{{ url('/session/' . $session->uuid) }}" target="_blank">View Session</a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="card-footer d-flex justify-content-center">
+                    {{ $sessions->appends(['feedback_page' => request('feedback_page')])->links('pagination::bootstrap-4') }}
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
