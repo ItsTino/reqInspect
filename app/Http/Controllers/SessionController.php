@@ -40,13 +40,7 @@ class SessionController extends Controller
      *
      * @param  string  $uuid
      * @return \Illuminate\View\View
-     
-    public function show($uuid)
-    {
-        $session = Session::where('uuid', $uuid)->firstOrFail();
-        return view('session', compact('session'));
-    }
-     */
+     **/
 
     public function show($uuid)
     {

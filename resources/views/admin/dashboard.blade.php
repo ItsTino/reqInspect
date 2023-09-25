@@ -22,10 +22,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Complete Statistics</h5>
-                        <p class="card-text">Here you can display complete statistics of the system.</p>
-                        <!-- Include the statistics here -->
+                        <h5>Total Sessions: {{ $totalSessions }} <span class="text-success">( +{{ $newSessionsToday }} )</span></h5>
+                        <h5>Total Captures: {{ $totalCaptures }} <span class="text-success">( +{{ $newCapturesToday }} )</span></h5>
+                        <h5>Total Captures Table Rows Count: {{ $totalCaptureRows }}</h5>
+                        <h5>Database Size in MB: {{ $dbSize }}</h5>
                     </div>
                 </div>
+
             </div>
         </div>
 

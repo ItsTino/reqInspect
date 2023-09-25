@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use DB;
+use Carbon\Carbon;
+use App\Models\Session;
+use App\Models\ReceivedRequest;
 
 class AdminController extends Controller
 {
@@ -37,6 +41,20 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        // Get total sessions
+        $totalSessions = Session::count();
+        $newSessionsToday = Session::whereDate('created_at', Carbon::today())->count();
+
+        // Get total captures
+        $totalCaptures = ReceivedRequest::count();
+        $newCapturesToday = ReceivedRequest::whereDate('created_at', Carbon::today())->count();
+
+        // Get total captures table rows count
+        $totalCaptureRows = DB::table('received_requests')->count(); // Replace 'received_requests' with your actual table name if different
+
+        // Get Database Size
+        $dbSize = DB::select('SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) AS size FROM information_schema.tables WHERE table_schema = ?', [env('DB_DATABASE')])[0]->size;
+
+        return view('admin.dashboard', compact('totalSessions', 'newSessionsToday', 'totalCaptures', 'newCapturesToday', 'totalCaptureRows', 'dbSize'));
     }
 }
