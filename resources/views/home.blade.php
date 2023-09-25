@@ -28,7 +28,7 @@
                         <a class="nav-link" href="https://alpine.cx/">Alpine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://valentino.cx/">Contact</a>
+                        <a class="nav-link" href="mailto:inspect@alpine.cx">Contact</a>
                     </li>
                     <li class="nav-item">
                         <x-feedback-button />
@@ -42,7 +42,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8">
                 <div class="text-center mb-4">
-                    <h1>Welcome to reqInspect</h1>
+                    <h1>Welcome to reqInspect🕵️</h1>
                     <p>Inspect web requests and debug online apps, API calls, and webhooks easily.</p>
                     <p>Free, unlimited (10req/s) usage. No sign-up required.</p>
                 </div>
