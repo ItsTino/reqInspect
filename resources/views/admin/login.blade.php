@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="container mt-5">
