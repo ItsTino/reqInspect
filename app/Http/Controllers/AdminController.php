@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -18,8 +19,10 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        if ($request->input('password') === config('admin.password')) {
-            $request->session()->put('admin_password', $request->input('password'));
+        $hashedPassword = config('admin.password'); // Assuming you have the hashed password stored in a config or .env file
+
+        if (Hash::check($request->input('password'), $hashedPassword)) {
+            $request->session()->put('admin_password', $hashedPassword);
             return redirect()->route('admin.dashboard');
         }
 
