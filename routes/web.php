@@ -21,7 +21,8 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [SessionController::class, 'index']);
 Route::post('/session', [SessionController::class, 'store']);
 Route::get('/session/{uuid}', [SessionController::class, 'show'])->name('session.show');
-Route::any('/capture/{uuid}', [SessionController::class, 'captureData'])->name('session.captureData');
+//Route::any('/capture/{uuid}', [SessionController::class, 'captureData'])->name('session.captureData');
+Route::middleware(['throttle:600,1'])->any('/capture/{uuid}', [SessionController::class, 'captureData'])->name('session.captureData');
 Route::get('/session/{sessionUuid}/request/{requestId}', [SessionController::class, 'showRequest'])->name('session.showRequest');
 Route::get('/statistics', [StatisticsController::class, 'index']);
 Route::post('/feedback', [FeedbackController::class, 'store']);
@@ -34,3 +35,6 @@ Route::middleware(['admin.auth'])->group(function () {
 // Admin login routes without 'admin.auth' middleware
 Route::get('/admin/login', [AdminController::class, 'loginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login']);
+
+
+

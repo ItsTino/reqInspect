@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...
         'admin.auth' => \App\Http\Middleware\AdminAuthMiddleware::class,
+        'rate.limit' => \App\Http\Middleware\RateLimitMiddleware::class,
         // ...
     ];
     

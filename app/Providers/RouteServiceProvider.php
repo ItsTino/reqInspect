@@ -37,4 +37,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
     }
+
+    //Add Ratelimiting to capture function by session UUID
+    protected function configureRateLimiting()
+    {
+        RateLimiter::for('capture', function (Request $request) {
+            return Limit::perMinute(600)->by($request->route('uuid')); // Retrieve uuid from route parameter
+        });
+    }
 }
