@@ -5,7 +5,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>reqInspect - Home</title>
+    <title>reqInspect - Web Request Debugging Tool</title>
+    <meta name="description" content="reqInspect is a free web service to debug API's, network calls, and web apps by capturing web requests.">
+    <meta name="keywords" content="API Debugging, Web Request, Network Calls, Web Apps Debugging, reqInspect">
+    <meta name="author" content="Alpine Technica">
+    <link rel="canonical" href="https://www.reqinspect.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.reqinspect.com/">
+    <meta property="og:title" content="reqInspect - Web Request Debugging Tool">
+    <meta property="og:description" content="reqInspect is a free web service to debug API's, network calls, and web apps by capturing web requests.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.reqinspect.com/">
+    <meta property="twitter:title" content="reqInspect - Web Request Debugging Tool">
+    <meta property="twitter:description" content="reqInspect is a free web service to debug API's, network calls, and web apps by capturing web requests.">
+
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 
