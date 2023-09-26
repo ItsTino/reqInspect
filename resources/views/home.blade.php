@@ -10,13 +10,13 @@
     <meta name="keywords" content="API Debugging, Web Request, Network Calls, Web Apps Debugging, reqInspect">
     <meta name="author" content="Alpine Technica">
     <link rel="canonical" href="https://www.reqinspect.com/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.reqinspect.com/">
     <meta property="og:title" content="reqInspect - Web Request Debugging Tool">
     <meta property="og:description" content="reqInspect is a free web service to debug API's, network calls, and web apps by capturing web requests.">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.reqinspect.com/">
@@ -24,6 +24,21 @@
     <meta property="twitter:description" content="reqInspect is a free web service to debug API's, network calls, and web apps by capturing web requests.">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-83MQHK9J10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-83MQHK9J10');
+    </script>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
