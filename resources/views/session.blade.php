@@ -81,7 +81,7 @@
                         <pre>{{ json_encode(json_decode($latestRequest->headers), JSON_PRETTY_PRINT) }}</pre>
                         </p>
                         <p><strong>Body:</strong>
-                        <pre>{{ $latestRequest->body }}</pre>
+                        <pre>{{ json_encode(json_decode($latestRequest->body ), JSON_PRETTY_PRINT) }}</pre>
                         </p>
                         <p><strong>Query Parameters:</strong>
                         <pre>{{ json_encode(json_decode($latestRequest->query_params), JSON_PRETTY_PRINT) }}</pre>
